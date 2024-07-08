@@ -41,3 +41,20 @@ void insert_sibling(node* n, tree t) {
     t->parent = n->parent;              // imposta il padre di t come lo stesso padre di n
     n->nextSibling = t;                 // imposta t come nuovo prossimo fratello di n
 }
+
+//Restituisce il contenuto informative del nodo n
+char* get_info(node* n){
+
+}
+//Restituisce il padre del nodo n
+node* get_parent(node* n){
+
+}
+//Restituisce il primo figlio del nodo n, se esiste
+node* get_firstChild(node* n){
+
+}
+//Restituisce il fratello successive del nodo n, se esiste
+node* get_nextSibling(node* n){
+    
+}
