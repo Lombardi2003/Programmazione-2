@@ -47,7 +47,7 @@ lista delete_elem(lista l, elem* e){
         l1->pun=tail(e);        // riallacciamento degli altri elementi della lista
     }
     delete e;                   // eliminazione dell'elemento
-    return l;
+    return l;                   // ritorno lista aggiornata
 }
 
 //Ricerca di un elemento nella lista
