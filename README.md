@@ -2,4 +2,5 @@
 
 I file sono in C++ e sono un riassunto di quelle che sono le strutture dati più avanzate
 
-Liste
+Liste semplici -> lista_semplice.cc
+Liste doppie -> lista_doppia.cc
