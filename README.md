@@ -6,3 +6,5 @@ I file sono in C++ e sono un riassunto di quelle che sono le strutture dati più
 - lista_semplice.cc
 ### Liste doppie 
 - lista_doppia.cc
+### Alberi
+- alberi.cc
