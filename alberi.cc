@@ -22,11 +22,11 @@ tree root;
 
 //Crea un nuovo nodo con valore informativo i
 node* new_node(char* i) {
-    node* n = new node;                                 // creazione del nuovo nodo
-    n->inf = new char[strlen(i) + 1];                   // alloca spazio per la stringa, includendo il terminatore null
-    strcpy(n->inf, i);                                  // copia il contenuto della stringa i nel campo informativo del nuovo nodo
-    n->nextSibling=n->firstChild=n->parent=NULL;        // inizializza i puntatori a NULL
-    return n;                                           // restituisce il nuovo nodo creato
+    node* n = new node;                                     // creazione del nuovo nodo
+    n->inf = new char[strlen(i) + 1];                       // alloca spazio per la stringa, includendo il terminatore null
+    strcpy(n->inf, i);                                      // copia il contenuto della stringa i nel campo informativo del nuovo nodo
+    n->nextSibling = n->firstChild = n->parent = NULL;      // inizializza i puntatori a NULL
+    return n;                                               // restituisce il nuovo nodo creato
 }
 
 //Aggiorna p inserendo il sottoalbero radicato in c come primo figlio di p
