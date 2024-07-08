@@ -1,5 +1,5 @@
 /*
- *  Riassunto sulle principali primitive e funzione per quento rigurdano le liste semplici 
+ * Riassunto sulle principali primitive e funzione per quento rigurdano le liste semplici 
  */
 
 #include<iostream>
@@ -30,8 +30,8 @@ lista tail(lista l){
 
 //Inserimento di un elemento in testa alla lista
 lista insert_elem(lista l, elem * e){
-    e->pun=l;           //inserimento in testa = nuovo dato composto dall'informazione e un puntatore provenienti dal main     
-    return e;           //lista aggiornata
+    e->pun=l;           // il nuovo elemento punta al vecchio primo elemento della lista     
+    return e;           // il nuovo elemento diventa la nuova testa della lista (lista aggiornata)
 }
 
 //Eliminazione di un elemento della lista
