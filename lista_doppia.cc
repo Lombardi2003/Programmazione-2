@@ -156,3 +156,76 @@ lista cancella(lista l, int v){
     }
     return l;                           // ritorno della nuova lista
 }
+
+//Funzione per la navigazione tra gli elementi presenti all'interno di una lista
+void naviga(elem* e) {                              // prende un puntatore a un elemento della lista (elem* e) come argomento
+	char scelta;                                    // dichiara una variabile scelta di tipo char per memorizzare l'input dell'utente.
+	cout<< "Trovato!!";
+	do {
+		cout<< "Cosa vuoi fare (B per backward (muoversi indietro), F per forward (muoversi avanti), S per stop)"<<endl;
+		cin>>scelta;
+	    if(scelta=='F' && tail(e)!=NULL) {          // se l'utente sceglie 'F' e l'elemento corrente ha un successivo (tail(e) != NULL), stampa il valore del successivo elemento e aggiorna e per puntare al successivo.
+	    	cout<<head(tail(e))<<endl;
+	    	e=tail(e);
+        }
+	    else
+	    	if(scelta=='B' && prev(e) !=NULL) {     // se l'utente sceglie 'B' e l'elemento corrente ha un precedente (prev(e) != NULL), stampa il valore del precedente elemento e aggiorna e per puntare al precedente.
+	    		cout<<head(prev(e))<<endl;
+	    		e=prev(e);
+            }
+	    else cout<<"Elemento non esistente!!"<<endl;    // se l'utente sceglie 'F' ma non c'è un successivo o sceglie 'B' ma non c'è un precedente, stampa un messaggio di errore.
+    }		
+    while(scelta!='S');                                 // il ciclo continua finché l'utente non inserisce 'S' per fermarsi.
+}
+
+/***************************************************ESEMPIO MAIN **********************************************/
+
+int main()
+{
+    int n, v;               // numero di elementi (n), valore da inserire o cercare (v)
+    int scelta;             // la scelta dell'utente (scelta) e il 
+    lista testa=NULL;       // il puntatore alla testa della lista (testa)
+    elem* ris;              // puntatore all'elemento trovato (ris).
+    do {
+    	cout<<"Cosa vuoi fare?"<<endl;
+    	cout<<"1: Creare una lista"<<endl;
+    	cout<<"2: Cancellare valori dalla lista"<<endl;
+    	cout<<"3: Stampare la lista"<<endl;
+    	cout<<"4: Cercare valori nella lista"<<endl;
+    	cout<<"5: Esci"<<endl;
+    	cin>>scelta;
+    	switch(scelta) {
+    	    case 1:         // l'utente specifica il numero di elementi, e la lista viene creata chiamando crealista(n).
+                cout << "Inserire il numero di elementi da inserire nella lista" << endl;
+    		    cin >> n;
+    		    testa = crea_lista(n);
+    		break;
+    		case 2:         // l'utente specifica il valore da cancellare, e la funzione cancella(testa, v) viene chiamata per rimuovere tutti gli elementi con quel valore.
+                cout<<"Inserire il valore da cancellare:"<<endl;
+    		    cin>>v;
+    		    testa=cancella(testa,v);
+    		break;
+    		case 3:         // viene chiamata la funzione stampalista(testa) per stampare il contenuto della lista. 
+                stampa_lista(testa);
+    		break;
+    		case 4:         // l'utente specifica il valore da cercare, e se l'elemento viene trovato, viene chiamata la funzione naviga(ris) per permettere la navigazione tra gli elementi.
+                cout << "Valore da cercare"<<endl;
+    		    cin>>v;
+   			    ris=search(testa,v);
+    		    if(ris!=NULL)
+    			    naviga(ris);
+    		    else
+    			    cout<<"Valore non presente"<<endl;
+    		break;
+    		case 5:         // messaggio di uscita
+                cout<<"Ciao ciao!!"<<endl;}
+    	}
+		while(scelta!=5);
+		// non dimenticare di deallocare la memoria della lista quando non serve più (deallocare la memoria della lista prima di terminare il programma è importante per evitare perdite di memoria)
+        while (testa != NULL) {     // il ciclo continua fino a quando testa non è NULL
+            elem* temp = testa;     // viene creato un puntatore temporaneo temp che punta all'elemento attuale della testa.
+            testa = tail(testa);    // la testa viene aggiornata per puntare al prossimo elemento della lista (tail(testa)).
+            delete temp;            // il nodo puntato da temp viene deallocato usando delete.
+        }
+    return 0;
+}
