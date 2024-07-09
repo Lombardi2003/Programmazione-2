@@ -6,6 +6,26 @@
 #include<string.h>
 using namespace std;
 
+//********************************* FUNZIONI UTILI *********************************/
+
+//Dichiarazione di un nuovo tipo di dato
+typedef char* tipo_inf;
+//Confrontare due stringhe
+int compare(tipo_inf s1,tipo_inf s2){
+	return strcmp(s1,s2);
+}
+//Fare la copia da una stringa ad un altra
+void copy(tipo_inf& dest, tipo_inf source){
+	dest=new char[strlen(source)];
+	strcpy(dest,source);
+}
+//Stampare la stringa passata
+void print(tipo_inf inf){
+	cout<<inf;
+}
+
+/************************************ ALBERI*****************************************/
+
 //Creazione della nostro albeero tramite una struct
 struct node {
     char* inf;
@@ -20,13 +40,19 @@ typedef node* tree;             //utilizza la parola chiave typedef per definire
 //Definizione del tipo di dato
 tree root;
 
-//Crea un nuovo nodo con valore informativo i
+//Crea un nuovo nodo con valore informativo i (oppure con una funzione)
 node* new_node(char* i) {
     node* n = new node;                                     // creazione del nuovo nodo
     n->inf = new char[strlen(i) + 1];                       // alloca spazio per la stringa, includendo il terminatore null
     strcpy(n->inf, i);                                      // copia il contenuto della stringa i nel campo informativo del nuovo nodo
     n->nextSibling = n->firstChild = n->parent = NULL;      // inizializza i puntatori a NULL
     return n;                                               // restituisce il nuovo nodo creato
+}
+node* new_node(tipo_inf i){
+	node* n=new node;                                       // creazione del nuovo nodo
+	copy(n->inf,i);                                         // copia della stringa
+	n->nextSibling=n->firstChild=n->parent=NULL;            // inizializza i puntatori a NULL
+	return n;                                               // restituisce il nuovo nodo creato
 }
 
 //Aggiorna p inserendo il sottoalbero radicato in c come primo figlio di p
@@ -59,5 +85,26 @@ node* get_nextSibling(node* n){
 	return n->nextSibling;              // ritorno del fratello successivo del nodo
 }
 
+/********************************* VISITA DFS *********************************/
 
-// ciao mondo
+// Funzione per stampare la rappresentazione serializzata di un albero e con la funzione print per stampare il contenuto informativo di un nodo (oppure senza funzione)
+void serialize(tree t){
+    cout << "(";                   // inizia la serializzazione con un'apertura di parentesi
+    cout << get_info(t);           // stampa direttamente l'informazione del nodo corrente
+    tree t1 = get_firstChild(t);   // ottiene il primo figlio del nodo corrente
+    while(t1 != NULL){             // si controlla su tutti i figli del nodo corrente
+        serialize(t1);             // richiama ricorsivamente la funzione serialize sul figlio
+        t1 = get_nextSibling(t1);  // passa al prossimo fratello del figlio corrente
+    }
+    cout << ")";                   // Chiude la serializzazione con una chiusura di parentesi
+}
+void serialize(tree t) {
+    cout << "(";                   // inizia la serializzazione con un'apertura di parentesi
+    print(get_info(t));            // stampa l'informazione del nodo corrente utilizzando la funzione print
+    tree t1 = get_firstChild(t);   // ottiene il primo figlio del nodo corrente
+    while(t1 != NULL){             // si controlla su tutti i figli del nodo corrente
+        serialize(t1);             // richiama ricorsivamente la funzione serialize sul figlio
+        t1 = get_nextSibling(t1);  // passa al prossimo fratello del figlio corrente
+    }
+    cout << ")";                   // Chiude la serializzazione con una chiusura di parentesi
+}
