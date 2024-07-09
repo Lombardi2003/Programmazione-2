@@ -44,17 +44,17 @@ void insert_sibling(node* n, tree t) {
 
 //Restituisce il contenuto informative del nodo n
 char* get_info(node* n){
-
+	return n->inf;                      // ritorno dell'informazione del nodo
 }
 //Restituisce il padre del nodo n
 node* get_parent(node* n){
-
+	return n->parent;                   // ritorno del padre del nodo
 }
 //Restituisce il primo figlio del nodo n, se esiste
 node* get_firstChild(node* n){
-
+	return n->firstChild;               // ritorno del primo figlio del nodo
 }
 //Restituisce il fratello successive del nodo n, se esiste
 node* get_nextSibling(node* n){
-    
+	return n->nextSibling;              // ritorno del fratello successivo del nodo
 }
