@@ -131,3 +131,96 @@ int altezza(tree t){
 	}
 	return max + 1;                       // restituisce l'altezza massima trovata tra i figli più 1 (per includere il nodo corrente)
 }
+
+//Funzione per il calcolo della dimensione dell'albero (DFS)
+int dimensione(tree t) {
+    int dim = 0, dim1;            // inizializza il contatore della dimensione a 0 e una variabile temporanea dim1
+    tree t1 = get_firstChild(t);  // ottiene il primo figlio del nodo corrente
+    while (t1 != NULL) {          // itera su tutti i figli del nodo corrente
+        dim1 = dimensione(t1);    // calcola la dimensione del sottoalbero radicato nel figlio corrente
+        dim += dim1;              // aggiunge la dimensione del sottoalbero alla dimensione totale
+        t1 = get_nextSibling(t1); // passa al fratello successivo del nodo corrente
+    }
+    return dim + 1;               // ritorna la dimensione totale dell'albero, includendo il nodo corrente
+}
+
+
+/********************************* VISITA BFS *********************************/
+//Per l'utilizzo delle visite BFS c'è bisogno di utilizzare una Coda
+
+//Definizione della struttura elemBFS
+struct elemBFS {
+    node* inf;       // informazione contenuta nel nodo della coda, un puntatore a un nodo dell'albero
+    elemBFS* pun;    // puntatore al prossimo elemento della coda
+};
+//Definizione del nuovo tipo lista come puntatore a elemBFS
+typedef elemBFS* lista;
+//Definizione della struttura codaBFS
+typedef struct {
+    lista head;      // puntatore alla testa della coda
+    elemBFS* tail;   // puntatore alla coda della coda
+} codaBFS;
+
+//Funzione per aggiungere un elemento alla coda
+codaBFS enqueue(codaBFS c, node* i) {
+    elemBFS *e = new_elem(i);  // crea un nuovo elemento per la coda
+    if (c.tail != NULL) {      // se la coda non è vuota
+        c.tail->pun = e;       // collega l'ultimo elemento al nuovo elemento
+    }
+    c.tail = e;                // imposta il nuovo elemento come l'ultimo della coda
+    if (c.head == NULL) {      // se la coda era vuota
+        c.head = c.tail;       // imposta anche il primo elemento della coda
+    }
+    return c;                  // ritorna la coda aggiornata
+}
+
+//Funzione per rimuovere e restituire il primo elemento della coda
+node* dequeue(codaBFS& c) {
+    node* ris = (c.head)->inf; // salva il puntatore al nodo da restituire
+    c.head = (c.head)->pun;    // sposta la testa al prossimo elemento
+    return ris;                // ritorna il nodo rimosso
+}
+
+//Funzione per ottenere il primo elemento della coda senza rimuoverlo
+node* first(codaBFS c) {
+    return (c.head)->inf;      // ritorna il nodo in testa alla coda
+}
+
+//Funzione per verificare se la coda è vuota
+bool isEmpty(codaBFS c) {
+    if (c.head == NULL) {      // se la testa è NULL, la coda è vuota
+        return true;
+    }
+    return false;              // altrimenti, la coda non è vuota
+}
+
+//Funzione per creare una nuova coda vuota
+codaBFS newQueue() {
+    codaBFS c = {NULL, NULL};  // inizializza head e tail a NULL
+    return c;                  // ritorna la nuova coda vuota
+}
+
+//Funzione per creare un nuovo elemento della coda
+static elemBFS* new_elem(node* n) {
+    elemBFS* p = new elemBFS;  // alloca un nuovo elemBFS
+    p->inf = n;                // imposta il nodo come informazione
+    p->pun = NULL;             // imposta il puntatore al prossimo elemento come NULL
+    return p;                  // ritorna il nuovo elemento
+}
+
+//Funzione per il calcolo della dimensione dell'albero (BFS)
+int dimensione(tree t) {
+    int count = 0;                      // inizializza il contatore dei nodi a 0
+    codaBFS c = newQueue();             // crea una nuova coda vuota
+    c = enqueue(c, t);                  // inserisce la radice dell'albero nella coda
+    while (!isEmpty(c)) {               // continua finché la coda non è vuota
+        node* n = dequeue(c);           // estrae il primo nodo dalla coda
+        count++;                        // incrementa il contatore dei nodi
+        tree t1 = get_firstChild(n);    // ottiene il primo figlio del nodo corrente
+        while (t1 != NULL) {            // itera su tutti i figli del nodo corrente
+            c = enqueue(c, t1);         // aggiunge ogni figlio alla coda
+            t1 = get_nextSibling(t1);   // passa al fratello successivo
+        }
+    }
+    return count;                       // ritorna il numero totale di nodi
+}
