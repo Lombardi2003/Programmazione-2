@@ -93,7 +93,7 @@ node* get_nextSibling(node* n){
 
 /********************************* VISITA DFS *********************************/
 
-// Funzione per stampare la rappresentazione serializzata di un albero e con la funzione print per stampare il contenuto informativo di un nodo (oppure senza funzione)
+//Funzione per stampare la rappresentazione serializzata di un albero e con la funzione print per stampare il contenuto informativo di un nodo (oppure senza funzione)
 void serialize(tree t){
     cout << "(";                   // inizia la serializzazione con un'apertura di parentesi
     cout << get_info(t);           // stampa direttamente l'informazione del nodo corrente
@@ -113,4 +113,21 @@ void serialize(tree t) {
         t1 = get_nextSibling(t1);  // passa al prossimo fratello del figlio corrente
     }
     cout << ")";                   // Chiude la serializzazione con una chiusura di parentesi
+}
+
+//Funzione per il calcolo dell'altezza di un albero
+int altezza(tree t){
+	if(get_firstChild(t)==NULL){        // se il nodo non ha figli
+		return 0;                       // la sua altezza è 0
+    }
+    int max=0,max_loc;                  // si inizializzano le variabili per tenere traccia dell'altezza massima
+	tree t1 = get_firstChild(t);        // si ottiene il primo figlio del nodo corrente
+	while(t1!=NULL){                    // si controlla su tutti i figli del nodo corrente
+		max_loc=altezza(t1);            // richiama ricorsivamente la funzione altezza sul figlio e ne memorizza il risultato
+		if(max_loc>max){
+			max=max_loc;                // aggiorna il massimo se l'altezza del figlio corrente è maggiore dell'altezza massima finora trovata
+        }
+        t1 = get_nextSibling(t1);       // si passa al prossimo fratello del figlio corrente
+	}
+	return max + 1;                       // restituisce l'altezza massima trovata tra i figli più 1 (per includere il nodo corrente)
 }
