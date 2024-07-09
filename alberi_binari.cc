@@ -5,7 +5,7 @@
 #include<iostream>
 using namespace std;
 
-/********************************ALBERI BINARI ********************************/
+/********************************ALBERI BINARI********************************/
 
 //Definizione della struttura nodo
 struct bnode {
@@ -16,3 +16,5 @@ struct bnode {
 };
 //Dichiarazione del t324683ipo di dato binary tree
 typedef bnode* btree;
+
+/****************************ALBERI BINARI DA RICERCA***************************/
