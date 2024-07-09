@@ -33,6 +33,12 @@ struct node {
 	node* firstChild;   // puntatore al primo figlio
 	node* nextSibling;  // puntatore al prossimo fratello
 };
+struct node {
+    tipo_inf inf;
+    node* parent;       // puntatore al nodo padre (opzione)
+	node* firstChild;   // puntatore al primo figlio
+	node* nextSibling;  // puntatore al prossimo fratello
+};
 
 //Dichiarazione del nuovo tipo lista
 typedef node* tree;             //utilizza la parola chiave typedef per definire un nuovo tipo chiamato tree. 
