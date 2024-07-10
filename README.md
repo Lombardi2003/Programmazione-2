@@ -1,6 +1,6 @@
 # 🌟 Riassunto Programmazione 2 🌟
 
-Benvenuto nella repository **Riassunto Programmazione 2**! Qui troverai una raccolta di file in C++ che riassumono le strutture dati avanzate trattate nel corso.
+Benvenuto nella repository **Riassunto Programmazione 2**! Qui troverai una raccolta di file in C++ che riassumono le strutture dati avanzate trattate.
 
 ## Contenuti 📂
 
