@@ -34,15 +34,5 @@ Implementazione di alberi binari.
     ```bash
     g++ nome_file.cc -o nome_output
     ```
-
-## Contributi 🤝
-
-Se desideri contribuire, sentiti libero di fare un fork del progetto e inviare una pull request con le tue modifiche!
-
-## Licenza 📜
-
-Questo progetto è rilasciato sotto la licenza MIT. Vedi il file [LICENSE](LICENSE) per maggiori dettagli.
-
----
-
-Sentiti libero di contattarmi per qualsiasi domanda o suggerimento. Buona programmazione! 💻✨
+##
+Buona programmazione! 💻✨
