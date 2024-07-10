@@ -19,20 +19,5 @@ Implementazione base di alberi.
 ### 🌲 Alberi binari
 Implementazione di alberi binari.
 - [alberi_binari.cc](alberi_binari.cc)
-
-## Come iniziare 🚀
-
-1. **Clona la repository**:
-    ```bash
-    git clone https://github.com/tuo-username/Riassunto-Programmazione-2.git
-    ```
-2. **Naviga nella directory**:
-    ```bash
-    cd Riassunto-Programmazione-2
-    ```
-3. **Compila i file**:
-    ```bash
-    g++ nome_file.cc -o nome_output
-    ```
-##
+#
 Buona programmazione! 💻✨
