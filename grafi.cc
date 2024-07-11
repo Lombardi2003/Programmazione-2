@@ -141,3 +141,65 @@ int main(int argc,char *argv[]) {
       } 
 }
 
+/**********************************VISITE ***********************************/
+
+//Rappresenta un elemento della coda BFS
+struct elemBFS {
+    int inf;         // informazione contenuta nel nodo della coda BFS
+    elemBFS* pun;    // puntatore al prossimo elemento nella coda
+};
+//Definizione del nuovo tipo di dato
+typedef elemBFS* lista;
+//Rappresentazione di una coda BFS con un puntatore alla testa
+typedef struct {
+    lista head;     // puntatore alla testa della coda
+    elemBFS* tail;  // puntatore alla coda della coda
+} codaBFS;
+
+
+//Funzione che aggiunge un nuovo elemento con valore i alla fine della coda c
+codaBFS enqueue(codaBFS c, int i){
+    elemBFS* e = new_elem(i);   // crea un nuovo elemento della coda con valore i
+    if (c.tail != NULL) {
+        c.tail->pun = e;        // collega il nuovo elemento alla fine della coda esistente
+    }
+    c.tail = e;                 // aggiorna il puntatore alla fine della coda
+    if (c.head == NULL) {
+        c.head = c.tail;        // se la coda era vuota, head punta ora al nuovo elemento
+    }
+    return c;                   // restituisce la coda aggiornata
+}
+
+//Funzione che restituisce il valore dell'elemento in testa alla coda c senza rimuoverlo.
+int dequeue(codaBFS& c){
+    int ris = (c.head)->inf;   // ottiene il valore dell'elemento in testa alla coda
+    c.head = (c.head)->pun;    // rimuove l'elemento dalla testa della coda
+    return ris;                // restituisce il valore dell'elemento rimosso
+}
+
+//Funzione che restituisce il valore dell'elemento in testa alla coda c senza rimuoverlo.
+int first(codaBFS c){
+    return (c.head)->inf;   // Restituisce il valore dell'elemento in testa alla coda
+}
+
+//Funzione che crea e restituisce un nuovo elemento della coda con valore n e puntatore pun a NULL.
+static elemBFS* new_elem(int n){
+    elemBFS* p = new elemBFS;   // crea un nuovo elemento della coda
+    p->inf = n;                 // imposta l'informazione del nuovo elemento
+    p->pun = NULL;              // inizializza il puntatore al prossimo elemento a NULL
+    return p;                   // restituisce il puntatore al nuovo elemento creato
+}
+
+//Funzione che verifica se la coda c è vuota controllando se head è NULL.
+bool isEmpty(codaBFS c){
+    if (c.head == NULL) {
+        return true;    // La coda è vuota se head è NULL
+    }
+    return false;       // Altrimenti, la coda non è vuota
+}
+
+//Funzione che crea e restituisce una nuova coda BFS vuota.
+codaBFS newQueue(){
+    codaBFS c = {NULL, NULL};   // Crea una nuova coda vuota inizializzando head e tail a NULL
+    return c;                   // Restituisce la nuova coda vuota
+}
