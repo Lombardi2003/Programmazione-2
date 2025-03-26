@@ -6,7 +6,7 @@ Cartella per la Prova d'Esame del **3 Luglio 2024**. Qui è contenuto tutto il n
 
 ## 📂 Contenuto del Repository
 
-- 📄 **[traccia.md](traccia.md)**: Immagine contenente la traccia dell'esame.
+- 📄 **[traccia.md](traccia.md)**: File contenente la traccia dell'esame.
 - 🗂️ **[bst.h](bst.h)**: File header iniziale del progetto.
 - 🗃️ **[bst.cc](bst.cc)**: File sorgente iniziale del progetto.
 - 📑 **[hotel.txt](hotel.txt)**: File di testo contenente i dati necessari per il progetto.
@@ -25,7 +25,7 @@ cd '.\Prove vecchie d''esame\03 Luglio 2024\'
 ```
 ### 2. 🔍 Esaminare la Traccia
 
-Aprire *[Traccia.jpg](Traccia.jpg)* per visualizzare i requisiti e le istruzioni del progetto. La traccia contiene tutte le informazioni necessarie per sviluppare il progetto.
+Aprire *[traccia.md](traccia.md)* per visualizzare i requisiti e le istruzioni del progetto. La traccia contiene tutte le informazioni necessarie per sviluppare il progetto.
 
 ### 3. 🛠️ Analizzare i File di Partenza
 
