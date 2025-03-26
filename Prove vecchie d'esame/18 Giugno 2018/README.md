@@ -1,6 +1,6 @@
 # 🌟 Prova Esame 18 Giugno 2018 - Programmazione 2 🌟
 
-Cartella per la Prova d'Esame del **3 Luglio 2024**. Qui è contenuto tutto il necessario per completare il progetto dell'esame, inclusi i file di partenza e la traccia dell'esame.
+Cartella per la Prova d'Esame del **18 Giugno 2018**. Qui è contenuto tutto il necessario per completare il progetto dell'esame, inclusi i file di partenza e la traccia dell'esame.
 
 ---
 
