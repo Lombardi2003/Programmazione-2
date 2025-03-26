@@ -1,0 +1,3 @@
+liste.o: liste.cc liste.h tipo.h
+compito.o: compito.cc liste.h tipo.h
+tipo.o: tipo.cc tipo.h
