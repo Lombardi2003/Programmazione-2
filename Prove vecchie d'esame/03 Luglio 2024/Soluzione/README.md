@@ -1,4 +1,4 @@
-# 🌟 Prova Esame 3 Luglio 2024 - Programmazione 2 🌟
+# 🌟 SOLUZIONE - Prova Esame 3 Luglio 2024 - Programmazione 2 🌟
 
 Cartella per la Prova d'Esame del **3 Luglio 2024**. Qui è contenuto tutto il necessario per completare il progetto dell'esame, inclusi i file di partenza e la traccia dell'esame.
 
@@ -6,7 +6,7 @@ Cartella per la Prova d'Esame del **3 Luglio 2024**. Qui è contenuto tutto il n
 
 ## 📂 Contenuto del Repository
 
-- 📄 **[Traccia.jpg](Traccia.jpg)**: Immagine contenente la traccia dell'esame.
+- 📄 **[traccia.md](traccia.md)**: Immagine contenente la traccia dell'esame.
 - 🗂️ **[bst.h](bst.h)**: File header iniziale del progetto.
 - 🗃️ **[bst.cc](bst.cc)**: File sorgente iniziale del progetto.
 - 📑 **[hotel.txt](hotel.txt)**: File di testo contenente i dati necessari per il progetto.
